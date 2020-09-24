@@ -15,9 +15,22 @@ class comparator():
         with open('config/config.json') as config_file:
             config = json.loads(config_file.read())
         
-        self.BROWSER = config['BROWSER']
-        self.VARIANCE_TOLERANCE_LIMIT = config['VARIANCE_TOLERANCE_LIMIT']
-        self.TEMPERATURE_UNIT = config['TEMPERATURE_UNIT']
+        if config['BROWSER'].lower() == 'chrome':
+            self.BROWSER = config['BROWSER']
+        else:
+            raise ValueError('Only Chrome browser is supported.')
+        
+        print(type(config['VARIANCE_TOLERANCE_LIMIT']))
+        if type(config['VARIANCE_TOLERANCE_LIMIT']) is int:
+            self.VARIANCE_TOLERANCE_LIMIT = abs(config['VARIANCE_TOLERANCE_LIMIT'])
+        else:
+            raise TypeError('Variance tolerance limit should be a positive/negative integer.')
+
+        if config['TEMPERATURE_UNIT'].lower() is not 'metric':
+            raise ValueError('Temperature unit should be "metric". Other units are not supported currently.')
+        else:            
+            self.TEMPERATURE_UNIT = config['TEMPERATURE_UNIT']
+
         self.API_KEY = config['API_KEY']
         self.BROWSER_TIMEOUT = config['BROWSER_TIMEOUT']
 
