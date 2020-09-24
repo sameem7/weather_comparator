@@ -16,7 +16,7 @@ class comparator():
             config = json.loads(config_file.read())
         
         self.BROWSER = config['BROWSER']
-        self.VARIANCE_TOLERANCE_LIMIT = config['VARIANCE_TOLERANCE_LIMIT']
+        self.VARIANCE_TOLERANCE_LIMIT = abs(config['VARIANCE_TOLERANCE_LIMIT'])
         self.TEMPERATURE_UNIT = config['TEMPERATURE_UNIT']
         self.API_KEY = config['API_KEY']
         self.BROWSER_TIMEOUT = config['BROWSER_TIMEOUT']
