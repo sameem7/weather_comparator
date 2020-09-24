@@ -24,10 +24,17 @@ class apiHandler():
         return response.json(), response.status_code
 
 class weatherCondition(apiHandler):
+    def __init__(self, city, country_code, api_key, unit):
+        self.city_name = city
+        self.country_code = country_code
+        self.api_key = api_key
+        self.unit = unit
+
     def get_temperature_from_api(self):
         url = 'https://api.openweathermap.org'
         endpoint = '/data/2.5/weather'
-        params = {'q':'Bengaluru,IN', 'appid':'7fe67bf08c80ded756e598d6f8fedaea', 'units':'metric'}
+        city = self.city_name + ',' + self.country_code
+        params = {'q':city, 'appid':self.api_key, 'units':self.unit}
         
         response_body, status_code = self.send_request('get', url, endpoint, params=params)
         return response_body['main']
