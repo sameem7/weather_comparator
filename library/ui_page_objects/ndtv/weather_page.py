@@ -1,8 +1,8 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
-from ui_page_objects.common.webdriver import Driver
-from ui_page_objects.ndtv.ndtv_homepage import ndtvHomepage
+from library.ui_page_objects.common.webdriver import Driver
+from library.ui_page_objects.ndtv.ndtv_homepage import ndtvHomepage
 
 class weatherPage(ndtvHomepage):
     weather_page_url = 'https://social.ndtv.com/static/Weather/report'

@@ -6,8 +6,8 @@ import pytest
 import time
 
 from library.api.api_handler import weatherCondition
-from ui_page_objects.ndtv.ndtv_homepage import ndtvHomepage
-from ui_page_objects.ndtv.weather_page import weatherPage
+from library.ui_page_objects.ndtv.ndtv_homepage import ndtvHomepage
+from library.ui_page_objects.ndtv.weather_page import weatherPage
 
 
 class comparator():

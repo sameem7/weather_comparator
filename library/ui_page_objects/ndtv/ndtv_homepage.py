@@ -5,7 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 
-from ui_page_objects.common.webdriver import Driver
+from library.ui_page_objects.common.webdriver import Driver
 
 
 class ndtvHomepage(Driver):
