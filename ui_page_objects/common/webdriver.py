@@ -12,7 +12,11 @@ class Driver(webdriver.Chrome):
             self.driver = webdriver.Firefox(executable_path=GeckoDriverManager().install())
     
     def __del__(self):
-        self.driver.close()
+        try:
+            if self.driver.session_id:
+                self.driver.close()
+        except Exception as error:
+            print('Browser is already closed.')
     
     def enter_text(self, text, locator):
         self.driver.find_element_by_id(locator).send_keys(text)
