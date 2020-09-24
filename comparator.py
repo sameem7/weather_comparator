@@ -5,10 +5,9 @@ import json
 import pytest
 import time
 
-
 from library.api.api_handler import weatherCondition
-from ui_page_objects.ndtv.ndtv_homepage import ndtvHomepage
-from ui_page_objects.ndtv.weather_page import weatherPage
+from library.ui_page_objects.ndtv.ndtv_homepage import ndtvHomepage
+from library.ui_page_objects.ndtv.weather_page import weatherPage
 
 
 class comparator():
@@ -20,21 +19,22 @@ class comparator():
         self.VARIANCE_TOLERANCE_LIMIT = config['VARIANCE_TOLERANCE_LIMIT']
         self.TEMPERATURE_UNIT = config['TEMPERATURE_UNIT']
         self.API_KEY = config['API_KEY']
+        self.BROWSER_TIMEOUT = config['BROWSER_TIMEOUT']
 
     def _get_temperature_from_ui(self, city_name):
         page = weatherPage(self.BROWSER)
         page.go_to_ndtv_homepage()
         page.click_three_dots_icon()
         page.navigate_to_weather_page()
-        time.sleep(3)
+        time.sleep(self.BROWSER_TIMEOUT)
 
         page.enter_text_in_searchbox(city_name)
-        time.sleep(3)
+        time.sleep(self.BROWSER_TIMEOUT)
         if not page.is_city_selected(city_name):
             page.select_city(city_name)
-        time.sleep(3)
+        time.sleep(self.BROWSER_TIMEOUT)
         page.click_city_on_map(city_name)
-        time.sleep(3)
+        time.sleep(self.BROWSER_TIMEOUT)
         conditions = page.get_weather_conditions(city_name)
 
         return conditions['Temp in Degrees']
@@ -56,7 +56,6 @@ class comparator():
             return False
 
 
-
 def test_compare_temperature():
     status = comparator().compare_temperature('Bengaluru', 'IN')
-    assert status, "Temperature variance is above sepcified limit!!" 
+    assert status, "Temperature variance is above specified limit!!" 

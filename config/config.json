@@ -2,5 +2,6 @@
     "BROWSER": "Chrome",
     "VARIANCE_TOLERANCE_LIMIT": 2,
     "TEMPERATURE_UNIT": "metric",
-    "API_KEY": "7fe67bf08c80ded756e598d6f8fedaea"
+    "API_KEY": "7fe67bf08c80ded756e598d6f8fedaea",
+    "BROWSER_TIMEOUT": 3
 }
