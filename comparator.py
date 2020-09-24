@@ -58,4 +58,4 @@ class comparator():
 
 def test_compare_temperature():
     status = comparator().compare_temperature('Bengaluru', 'IN')
-    assert status, "Temperature variance is above sepcified limit!!" 
+    assert status, "Temperature variance is above specified limit!!" 
