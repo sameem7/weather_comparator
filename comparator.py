@@ -26,7 +26,7 @@ class comparator():
         else:
             raise TypeError('Variance tolerance limit should be a positive/negative integer.')
 
-        if config['TEMPERATURE_UNIT'].lower() is not 'metric':
+        if config['TEMPERATURE_UNIT'].lower() != 'metric':
             raise ValueError('Temperature unit should be "metric". Other units are not supported currently.')
         else:            
             self.TEMPERATURE_UNIT = config['TEMPERATURE_UNIT']
