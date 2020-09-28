@@ -15,7 +15,7 @@
 ***Note: Skip to step 4 if Google Chrome, Python 3.x and pip3 are already installed***
 
 ## **1. Install Google Chrome** ##
-Download and install the Google Chrome browser from 
+Download and install the Google Chrome browser. 
 
 ## **2. Install Python 3.X** ##
 In order to be able to run the comparator test, Python 3.X needs to be installed in the machine. Most *nix based Operating systems come with Python 3.X installed.
