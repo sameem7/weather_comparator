@@ -73,8 +73,4 @@ class comparator():
             self.BuiltIn.fail("Variance is not in the specified limit")
         else:
             self.BuiltIn.log_to_console('Temperature variance is within specified limits')
-            
-
-def test_compare_temperature():
-    status = comparator().compare_temperature('Bengaluru', 'IN')
-    assert status, "Temperature variance is above specified limit!!" 
+             
