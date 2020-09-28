@@ -9,8 +9,10 @@ class weatherPage(ndtvHomepage):
     search_box_id = 'searchBox'
     bengaluru_checkbox = 'Bengaluru'
     bellary_checkbox = 'Bellary'
+    chennai_checkbox = 'Chennai'
     bengaluru_map_pin = '//div[contains(@title, "Bengaluru")]'
     bellary_map_pin = '//div[contains(@title, "Bellary")]'
+    chennai_map_pin = '//div[contains(@title, "Chennai")]'
     weather_container = '//div[@class="leaflet-popup-content"]' 
     weather_content = '//div[@class="leaflet-popup-content"]//span[@class="heading"]'
 
@@ -22,6 +24,8 @@ class weatherPage(ndtvHomepage):
             locator = self.bengaluru_checkbox
         elif city_name.lower() == 'bellary':
             locator = self.bellary_checkbox
+        elif city_name.lower() == 'chennai':
+            locator = self.chennai_checkbox
         print(self.is_selected(locator))
         return self.is_selected(locator)
 
@@ -30,6 +34,8 @@ class weatherPage(ndtvHomepage):
             locator = self.bengaluru_checkbox
         elif city_name.lower() == 'bellary':
             locator = self.bellary_checkbox
+        elif city_name.lower() == 'chennai':
+            locator = self.chennai_checkbox
         self.click_element(locator)
     
     def click_city_on_map(self, city_name):
@@ -37,6 +43,8 @@ class weatherPage(ndtvHomepage):
             self.click_element(self.bengaluru_map_pin, 'xpath')
         elif city_name.lower() == 'bellary':
             self.click_element(self.bellary_map_pin, 'xpath')
+        elif city_name.lower() == 'chennai':
+            self.click_element(self.chennai_map_pin, 'xpath')
     
     def get_weather_conditions(self, city_name):
         conditions = self.driver.find_elements_by_xpath(self.weather_content)
