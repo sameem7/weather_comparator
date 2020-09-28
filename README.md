@@ -1,6 +1,18 @@
 # How to run the comparison test:
 
 
+## **Requirements**
+
+- Softwares:
+  - Google Chrome browser needs to be installed in the local machine where the test is run.
+  - Python 3.X
+  - Python package manager - pip3
+- OS:
+  - macOS (Verified)
+  - Windows (Verified)
+  - Linux (I currently do not have a Linux machine, so could not verify the test execution in Linux)
+
+
 ## **Install Python 3.X** ##
 In order to be able to run the comparator test, Python 3.X needs to be installed in the machine. Most *nix based Operating systems come with Python 3.X installed.
 To check if python is already installed run the below command in your terminal:
@@ -39,8 +51,8 @@ To run the test suites individually:
   > robot test/<test_suite_name>.robot
 
 Example:
-
   > robot test/comparator_data_driven_test.robot
+
 
 ## **View the generated reports** 
 
@@ -49,8 +61,6 @@ Example:
     - *log.html*
     - *report.html*
 - Copy the path of the *report.html* file and paste it in a browser, to view the HTML report
-
-
 
 
 ## **Configuring the variance limit**
