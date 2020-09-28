@@ -2,7 +2,6 @@ import sys
 sys.path.append('../')
 
 import json
-import pytest
 import time
 from robot.api.deco import keyword
 from robot.libraries.BuiltIn import BuiltIn
