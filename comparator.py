@@ -4,6 +4,8 @@ sys.path.append('../')
 import json
 import pytest
 import time
+from robot.api.deco import keyword
+from robot.libraries.BuiltIn import BuiltIn
 
 from library.api.api_handler import weatherCondition
 from library.ui_page_objects.ndtv.ndtv_homepage import ndtvHomepage
@@ -33,6 +35,7 @@ class comparator():
 
         self.API_KEY = config['API_KEY']
         self.BROWSER_TIMEOUT = config['BROWSER_TIMEOUT']
+        self.BuiltIn = BuiltIn()
 
     def _get_temperature_from_ui(self, city_name):
         page = weatherPage(self.BROWSER)
@@ -49,25 +52,28 @@ class comparator():
         page.click_city_on_map(city_name)
         time.sleep(self.BROWSER_TIMEOUT)
         conditions = page.get_weather_conditions(city_name)
-
-        return conditions['Temp in Degrees']
+        temperature_ui = conditions['Temp in Degrees']
+        self.BuiltIn.log_to_console('\n')
+        self.BuiltIn.log_to_console('Temperature from UI: '+str(temperature_ui))
+        return temperature_ui
 
     def _get_temperature_from_api(self, city_name, country_code):
-        temperature_api = weatherCondition(city_name, country_code, self.API_KEY, self.TEMPERATURE_UNIT).get_temperature_from_api()
-        return temperature_api['temp']
+        temperature = weatherCondition(city_name, country_code, self.API_KEY, self.TEMPERATURE_UNIT).get_temperature_from_api()
+        temperature_api = temperature['temp']
+        self.BuiltIn.log_to_console('Temperature from API: '+str(temperature_api))
+        
+        return temperature_api
 
+    @keyword ('Compare temperature for')
     def compare_temperature(self, city_name, country_code):
         temperature_ui = float(self._get_temperature_from_ui(city_name)) 
         temperature_api = float(self._get_temperature_from_api(city_name, country_code))
 
-        print('Temperature from UI: ' +str(temperature_ui))
-        print('Temperature from API: '+str(temperature_api))
-
-        if abs(temperature_api - temperature_ui) <= self.VARIANCE_TOLERANCE_LIMIT:
-            return True
+        if abs(temperature_api - temperature_ui) > self.VARIANCE_TOLERANCE_LIMIT:
+            self.BuiltIn.fail("Variance is not in the specified limit")
         else:
-            return False
-
+            self.BuiltIn.log_to_console('Temperature variance is within specified limits')
+            
 
 def test_compare_temperature():
     status = comparator().compare_temperature('Bengaluru', 'IN')
