@@ -1,4 +1,4 @@
 selenium==3.141.0
 webdriver-manager==3.2.2
 requests==2.22.0
-pytest==6.0.2
+robotframework==3.1
