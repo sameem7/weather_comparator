@@ -26,7 +26,8 @@ class weatherPage(ndtvHomepage):
             locator = self.bellary_checkbox
         elif city_name.lower() == 'chennai':
             locator = self.chennai_checkbox
-        print(self.is_selected(locator))
+        else:
+            raise InvalidCitySelected(city_name)
         return self.is_selected(locator)
 
     def select_city(self, city_name):
@@ -36,6 +37,8 @@ class weatherPage(ndtvHomepage):
             locator = self.bellary_checkbox
         elif city_name.lower() == 'chennai':
             locator = self.chennai_checkbox
+        else:
+            raise InvalidCitySelected(city_name)
         self.click_element(locator)
     
     def click_city_on_map(self, city_name):
@@ -45,6 +48,8 @@ class weatherPage(ndtvHomepage):
             self.click_element(self.bellary_map_pin, 'xpath')
         elif city_name.lower() == 'chennai':
             self.click_element(self.chennai_map_pin, 'xpath')
+        else:
+            raise InvalidCitySelected(city_name)
     
     def get_weather_conditions(self, city_name):
         conditions = self.driver.find_elements_by_xpath(self.weather_content)
@@ -53,4 +58,10 @@ class weatherPage(ndtvHomepage):
             parameter, separator, value = condition.text.partition(':')
             weather_condition[parameter.strip()] = value
         return weather_condition
-            
+
+
+class InvalidCitySelected(Exception):
+    
+    def __init__(self, city_name):
+        self.city_name = city_name
+        super().__init__('Invalid city selected: ' +str(self.city_name)+'. Please select one from Bengaluru, Bellary, or Chennai')
