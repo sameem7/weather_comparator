@@ -31,9 +31,26 @@ Clone the repository to your local machine
 - All required packages would be installed in your machine.
 
 
-## **Run the test**
-From within the project root directory, run the following command:
-> pytest comparator.py
+## **Run the test suites**
+From within the project root directory, run the following command to execute all tests:
+> robot test
+
+To run the test suites individually:
+  > robot test/<test_suite_name>.robot
+
+Example:
+
+  > robot test/comparator_data_driven_test.robot
+
+## **View the generated reports** 
+
+- Once the test execution is completed, there will be 3 report files created in the root directory
+    - *output.xml*
+    - *log.html*
+    - *report.html*
+- Copy the path of the *report.html* file and paste it in a browser, to view the HTML report
+
+
 
 
 ## **Configuring the variance limit**
