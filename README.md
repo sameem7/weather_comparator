@@ -57,6 +57,8 @@ To run the test suites individually:
 Example:
   > robot test/comparator_data_driven_test.robot
 
+Screenshot:
+![Screenshot 2020-09-28 at 5 09 40 PM](https://user-images.githubusercontent.com/10773381/94428137-d5086800-01ad-11eb-9245-e7174de83019.png)
 
 ## **7. View the generated reports** 
 
@@ -68,7 +70,8 @@ Example:
 - Copy the path of *report.html* and paste it in a browser, to view the HTML report.
   - After the completion of the test execution, the path of *report.html* will be available in the terminal. The path can also be copied here.
 
-
+Screenshots:
+![Screenshot 2020-09-28 at 5 10 57 PM](https://user-images.githubusercontent.com/10773381/94428147-d89bef00-01ad-11eb-9e85-d5c123da05e6.png)
 
 
 ## **8. Configuring the variance limit**
